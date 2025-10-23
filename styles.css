@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
+
     background: #000000;
     color: #FFF;
     margin: 0;
@@ -12,7 +18,7 @@ body {
 .conteudo{
     margin: 0 auto;
     width: 100%;
-    max-width: 550px;
+    max-width: 700px;
     margin-top: 50px;
     margin-bottom: 50px;
     background: #000000;
@@ -20,34 +26,51 @@ body {
     border-radius: 12px;
 }
 
+
+
+.conteudo img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 70px;
+    font-size: 4.6rem;
+}
+
+.topoTitle h2{
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
 .topo {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .topo input{
-    width: 380px;
+    width: 450px;
+    height: 46px;
     padding: 15px;
     border-radius: 12px;
-    border: 1px solid #5e5d5d;
     outline: none;
     font-size: 1.2rem;
-    background: #191818;
+    background-color: rgba(158, 158, 158, 0.3);
     color: #FFF;
+    border: 1px solid #9E9E9E;
 }
 
 .topo button {
     width: 120px;
     border-radius: 12px;
     border: 1px solid #191818;
-    background: #191818;
+    background: #1E1E1E;
     color: #FFF;
     outline: none;
+    font-weight: 500;
 }
 
 .topo button:hover {
-    background: #1f1e1e;
+    background: #2b2a2a;
     cursor: pointer;
 }
 
@@ -58,26 +81,183 @@ body {
 }
 
 #listaTarefas li {
+    height: 46px;
     padding: 20px;
-    background: #191818;
-    border-radius: 12px;
+    background: #1E1E1E;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .btnAcao {
     border-radius: 20px;
-    border: 1px solid #191818;
+    border: 1px solid #1E1E1E;
     cursor: pointer;
     width: 38px;
     height: 38px;
     margin-right: 8px;
-    background: #302e2e;
+    background: #1E1E1E;
     outline: none;
 }
 
 .btnAcao:hover {
     background: #3c3a3a;
+}
+
+.textoTarefa {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 290px;
+    white-space: nowrap;
+}
+
+#janelaEdicao {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #191818;
+    border: 1px solid #2f2e2e;
+    width: 415px;
+    border-radius: 12px;
+    z-index: 200;
+    display: none;
+}
+
+#janelaEdicao.abrir {
+    display: block !important;
+}
+
+#janelaEdicaoFundo {
+    position: fixed;
+    top: 0;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.9;
+    z-index: 100;
+    right: 0;
+    display: none;
+}
+
+#janelaEdicaoFundo.abrir {
+    display: block !important;
+}
+
+#janelaEdicaoBtnFechar {
+    position: absolute;
+    top: -25px;
+    right: -18px; 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #2d2c2c;
+    background: #2d2c2c;
+    color: #FFF;
+    outline: none;
+}
+
+form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.frm-linha {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.frm-linha label {
+    margin-bottom: 7px;
+}
+
+.frm-linha input {
+    padding: 15px;
+    border-radius: 12px;
+    outline: none;
+    border: 1px solid #191818;
+    font-size: 1.2rem;
+    background: #2d2c2c;
+    color: #FFF;
+}
+
+.frm-linha button {
+    background: #2d2c2c;
+    border: 1px solid #191818;
+    padding: 7px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    color: #CCC;
+    cursor: pointer;
+    height: 50px;
+    font-size: 1.3rem;
+    outline: none;
+}
+
+.frm-linha button:hover {
+    background: #3c3a3a;
+}
+
+
+.textoTarefa.concluida {
+    text-decoration: line-through;
+    color: #fff;
+}
+
+#listaTarefas li {
+    align-items: center;
+}
+
+
+#listaTarefas li input[type="checkbox"] {
+
+    -webkit-appearance: none;
+    appearance: none;
+    
+    
+    width: 18px;
+    height: 18px;
+    
+    
+    background-color: #1E1E1E;
+    border: 1px solid #9E9E9E; 
+    
+    
+    border-radius: 4px;
+    
+    
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    outline: none; 
+    
+    vertical-align: middle; 
+    top: -1px;
+}
+
+#listaTarefas li input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    display: block;
+    
+    left: 4px;
+    top: 0px;
+    
+
+    width: 5px;
+    height: 10px;
+    
+    border: solid #9E9E9E; 
+    border-width: 0 3px 3px 0;
+    
+    transform: rotate(45deg);
+}
+
+#listaTarefas li input[type="checkbox"]:checked {
+    background-color: #ffffff;
+    border-color: #9E9E9E;
 }
